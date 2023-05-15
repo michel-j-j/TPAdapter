@@ -1,26 +1,15 @@
 package main;
 
-import model.Adaptador;
-import model.Comun;
-import model.Economico;
-import model.Electrico;
-import model.Motor;
+import java.io.File;
+
+import model.Reporte;
+import model.Reportes;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Motor comun = new Comun();
-		Motor economico = new Economico();
-		Motor electrico = new Adaptador(new Electrico());
-
-		comun.arrancar();
-		comun.acelerar();
-		comun.apagar();
-		System.out.println("////////ADAPTADOR////////");
-		electrico.arrancar();
-		electrico.acelerar();
-		electrico.apagar();
-
+		Reporte reporte = new Reporte("reporte.txt", new Reportes());
+		reporte.export(new File("reporte.txt"));
 	}
 
 }

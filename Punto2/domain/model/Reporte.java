@@ -2,20 +2,23 @@ package model;
 
 import java.io.File;
 
-class Reporte {
-	private String reporte;
+public class Reporte implements ReporteInterface {
 
-	public Reporte(String reporte) {
+	private String reporte;
+	private ReporteInterface validar;
+
+	public Reporte(String reporte, ReporteInterface validar) {
 		this.reporte = reporte;
+		this.validar = validar;
 	}
 
-	void export(File file) {
+	public void export(File file) {
 		if (file == null) {
 			throw new IllegalArgumentException("File es NULL; no puedo exportar...");
 		}
-		if (file.exists()) {
-			throw new IllegalArgumentException("El archivo ya existe...");
-		}
+		if (validar != null)
+			validar.export(file);
+
 		System.out.println("Exportar a Archivo");
 	}
 }
