@@ -1,0 +1,12 @@
+package main;
+
+import model.Comun;
+import model.Motor;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Motor comun = new Comun();
+	}
+
+}
